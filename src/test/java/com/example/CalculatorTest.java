@@ -3,17 +3,20 @@ package com.example;
 import com.example.model.User;
 import org.junit.jupiter.api.*;
 
+import java.util.logging.Logger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("calculator")
 @DisplayName("Calculator Test Cases \uD83D\uDE31")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CalculatorTest {
-
+    static final Logger logger = Logger.getLogger(CalculatorTest.class.getName());
     Calculator calculator;
     private static User user;
     @BeforeAll
     static void initAll() {
+        logger.info("Before all tests");
         user = new User();
         user.setFirstName("Amit");
         user.setLastName("Doe");

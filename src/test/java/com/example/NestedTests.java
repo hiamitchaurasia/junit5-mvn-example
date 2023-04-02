@@ -4,11 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@TestClassOrder(ClassOrderer.OrderAnnotation.class)
 class NestedTests {
 
     private List<String> list;
@@ -25,6 +23,7 @@ class NestedTests {
 
     @DisplayName("Grouped tests for checking members")
     @Nested
+    @Order(2)
     class CheckMembers {
         @Test
         void checkFirstElement() {
@@ -36,6 +35,14 @@ class NestedTests {
             assertEquals(("Mockito"), list.get(1));
         }
 
+    }
+
+    @Nested
+    @Order(1)
+    class SecondaryTests {
+        @Test
+        void test2() {
+        }
     }
 
 }
